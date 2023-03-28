@@ -1,14 +1,13 @@
 #include <Ps3Controller.h>
-#include <esp32-hal-ledc.h>
 
-//#define enA1 13
-//#define enB2 25
+//#define enA1 12
+//#define enB2 33
 //#define enA3 2
 //#define enB4 18
-int motor1pin1 = 12;
-int motor1pin2 = 14;
-int motor2pin1 = 27;
-int motor2pin2 = 26;
+int motor1pin1 = 14;
+int motor1pin2 = 27;
+int motor2pin1 = 26;
+int motor2pin2 = 25;
 int motor3pin1 = 4;
 int motor3pin2 = 16;
 int motor4pin1 = 17;
@@ -46,7 +45,7 @@ void notify()
   if (rightX < -100) {
     Serial.println("analog right kiri");
   }
-  
+
   if (rightX > 100) {
     Serial.println("analog right kanan");
   }
@@ -54,17 +53,17 @@ void notify()
   if (rightY < -100) {
     Serial.println("analog right atas");
   }
-  
+
   if (rightY > 100) {
     Serial.println("analog right bawah");
   }
-  
+
 
   //---------------------------------- ANALOG KIRI --------------------------------------------
   if (leftX < -100) {
     Serial.println("analog left kiri");
   }
-  
+
   if (leftX > 100) {
     Serial.println("analog left kanan");
   }
@@ -72,7 +71,7 @@ void notify()
   if (leftY < -100) {
     Serial.println("analog left atas");
   }
-  
+
   if (leftY > 100) {
     Serial.println("analog left bawah");
   }
@@ -130,6 +129,7 @@ void notify()
   }
 
 
+
   //--------------------------------  cross/square/triangle/circle  ---------------------------------------
 
   if ( Ps3.data.button.cross ) {
@@ -156,15 +156,15 @@ void notify()
   if ( Ps3.data.button.select ) {
     Serial.println("select button");
   }
-  
+
   if ( Ps3.data.button.start ) {
     Serial.println("start button");
   }
-  
+
   if ( Ps3.data.button.ps ) {
     Serial.println("Playstation button");
   }
-  
+
 }
 
 void onConnect() {
@@ -191,8 +191,6 @@ void setup()
   pinMode(motor3pin2, OUTPUT);
   pinMode(motor4pin1, OUTPUT);
   pinMode(motor4pin2, OUTPUT);
-
-  hop();
 
   servo1.attach(15);
   servo2.attach(32);
